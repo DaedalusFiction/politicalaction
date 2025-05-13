@@ -28,7 +28,7 @@
           Newsletter
         </h6>
         <div v-if="!emailSubmitted">
-          <p class="mb-4">Stay up-to-date on new projects</p>
+          <p class="mb-4">Stay up-to-date on new issues</p>
           <div class="flex sm:flex-col lg:flex-row gap-2">
             <input
               type="text"

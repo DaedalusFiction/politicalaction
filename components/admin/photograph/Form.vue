@@ -4,7 +4,7 @@
       <label for="category"> Category </label>
       <select id="category" v-model="formData.category" required>
         <option
-          v-for="(project, index) in projects"
+          v-for="(project, index) in issues"
           :key="index"
           :value="project.title"
         >
@@ -37,7 +37,7 @@ import useUploadDocument from "~/composables/admin/uploadDocument";
 import useUpdateDocument from "~/composables/admin/updateDocument";
 import useSnackbar from "~/composables/showSnackbar";
 import { db } from "~/firebase.config";
-import { projects } from "~/data";
+import { issues } from "~/data";
 const { photograph } = defineProps(["photograph"]);
 const emptyForm = {
   category: "",

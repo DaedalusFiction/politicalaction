@@ -7,6 +7,7 @@ const pages = [
   { title: "templates", href: "/templates" },
   { title: "contact", href: "/contact" },
 ];
+const issues = [];
 
 const socialMediaLinks = [
   { title: "Instagram", href: "https://Instagram.com" },
@@ -18,6 +19,7 @@ const email = "djs41286@gmail.com";
 export {
   siteName,
   siteDescription,
+  issues,
   siteURL,
   pages,
   socialMediaLinks,

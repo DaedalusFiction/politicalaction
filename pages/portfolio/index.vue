@@ -1,9 +1,9 @@
 <template>
   <div>
-    <LayoutPageHeader header="Projects" />
+    <LayoutPageHeader header="issues" />
     <div class="flex flex-col md:grid grid-cols-12 gap-3 px-3 mx-auto">
       <div class="col-span-6">
-        <div v-for="(project, index) in projects" :key="index" class="border-t">
+        <div v-for="(project, index) in issues" :key="index" class="border-t">
           <NuxtLink
             @mouseenter="hoveredProject = project"
             class="transition-all duration-300"
@@ -31,10 +31,10 @@
 </template>
 
 <script setup>
-import { projects } from "~/data";
+import { issues } from "~/data";
 import { ref } from "vue";
 
-// Your projects data
+// Your issues data
 
 // For tracking the hovered project
 const hoveredProject = ref(null);

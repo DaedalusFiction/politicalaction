@@ -61,10 +61,10 @@ import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "~/firebase.config";
 import { ref, reactive } from "vue";
 import { AdminPhotographForm } from "#components";
-import { projects } from "~/data";
+import { issues } from "~/data";
 
 const categories = reactive(
-  projects.map((project) => {
+  issues.map((project) => {
     return { title: project.title, photographs: [] };
   })
 );
