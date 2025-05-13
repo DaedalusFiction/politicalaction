@@ -1,7 +1,9 @@
 <template>
   <header :class="selectedImage && 'blur-md'" class="fixed w-full top-0 z-20">
     <div>
-      <div class="hidden lg:grid grid-cols-12 gap-3 px-4 py-2 mx-auto">
+      <div
+        class="hidden lg:grid grid-cols-12 gap-3 px-4 py-2 mx-auto bg-background"
+      >
         <div class="col-span-6 flex gap-3 items-center">
           <NuxtLink
             class="whitespace-nowrap text-2xl font-bold font-header transition-all"
@@ -15,13 +17,13 @@
           <NuxtLink
             v-for="item in pages"
             :key="item"
-            class="link mix-blend-difference font-bold"
+            class="link font-bold"
             :href="item.href"
             >{{ item.title }}</NuxtLink
           >
         </div>
       </div>
-      <div class="p-2 mx-auto flex xl:hidden justify-between items-center">
+      <div class="p-2 mx-auto flex lg:hidden justify-between items-center">
         <button
           class="navigationOptions text-2xl font-extrabold text-white"
           @click="handleExpandNavigation"
