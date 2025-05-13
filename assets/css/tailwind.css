@@ -15,8 +15,8 @@
   --color-background: #f7f0f0;
   --color-background-accent: #e3dbdc;
 
-  --font-header: Chivo;
-  --font-sans: Quicksand;
+  --font-header: JetBrainsMono;
+  --font-sans: JetBrainsMono;
 }
 
 body {
@@ -34,7 +34,7 @@ h6 {
 
 p,
 a {
-  @apply font-sans text-sm  text-dark dark:text-light;
+  @apply text-dark dark:text-light;
 }
 
 li {
@@ -120,6 +120,10 @@ label {
   }
 }
 /* pairings */
+@font-face {
+  font-family: JetBrainsMono;
+  src: url("~/assets/fonts/JetBrainsMono.woff2") format("woff2");
+}
 @font-face {
   font-family: Chivo;
   src: url("~/assets/fonts/Chivo.woff2") format("woff2");

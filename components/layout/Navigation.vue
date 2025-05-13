@@ -4,13 +4,12 @@
       <div class="hidden lg:grid grid-cols-12 gap-3 px-4 py-2 mx-auto">
         <div class="col-span-6 flex gap-3 items-center">
           <NuxtLink
-            class="whitespace-nowrap text-2xl font-bold transition-all"
+            class="whitespace-nowrap text-2xl font-bold font-header transition-all"
             to="/"
           >
-            <span class="text-primary dark:text-primaryDarkMode">X</span>
-            <span class="text-secondary dark:text-secondaryDarkMode">HMNZ</span>
+            VAOA
           </NuxtLink>
-          <p>the street photography of David J. Sorensen</p>
+          <p>Activism for All</p>
         </div>
         <div class="col-span-6 flex justify-between items-center">
           <NuxtLink
@@ -30,7 +29,7 @@
           <IconsHamburger class="navigationOptions" />
         </button>
         <h1 class="text-secondary dark:text-secondaryDarkMode">
-          <NuxtLink to="/" class="link">XHMNZ</NuxtLink>
+          <NuxtLink to="/" class="link">VAOA</NuxtLink>
         </h1>
       </div>
     </div>
