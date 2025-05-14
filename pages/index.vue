@@ -7,6 +7,13 @@
           repository for letter templates and information on becoming
           politically active in Virginia
         </p>
+        <p>
+          Not sure where to start? Check out our
+          <NuxtLink class="underline link" href="/getting-started"
+            >Getting Started</NuxtLink
+          >
+          guide!
+        </p>
       </div>
       <div class="col-span-6 flex flex-col gap-3">
         <p class="text-xl">
