@@ -48,7 +48,7 @@ export default async function useUploadDocument(
           ...formData,
           dateUploaded: Date.now(),
         });
-        useSnackbar("Article created");
+        useSnackbar("Article created!!!");
       } catch (error) {
         console.log(error.message);
         useSnackbar("Error creating article!");

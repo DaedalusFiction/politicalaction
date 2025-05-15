@@ -8,7 +8,7 @@
       <label for="topic" class="dark:text-white"> Topic</label>
       <select
         id="topic"
-        v-model="formData.topic"
+        v-model="formData.topic.title"
         required
         class="dark:text-white dark:bg-backgroundDarkMode"
       >
@@ -109,7 +109,7 @@ import { db } from "~/firebase.config";
 import { topics } from "~/data";
 const { issue } = defineProps(["issue"]);
 const emptyForm = {
-  topic: "",
+  topic: { title: "" },
   title: "",
   description: "",
   impact: "",
@@ -144,8 +144,7 @@ const handleRemoveExternalLink = (index) => {
 onMounted(() => {
   if (issue) {
     formData.value = {
-      //fill this out
-      topic: issue.data().topic,
+      topic: issue.data().topic.title,
       description: issue.data().description,
       title: issue.data().title,
       impact: issue.data().impact,
@@ -168,6 +167,7 @@ const submitForm = async () => {
     );
     emit("update");
   } else {
+    console.log(formData.value.topic.title);
     await useUploadDocument(
       `issues/topics/${formData.value.topic.title}`,
       formData.value,
