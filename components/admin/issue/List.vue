@@ -60,7 +60,7 @@ import { topics } from "~/data";
 
 const categories = reactive(
   topics.map((topic) => {
-    return { title: topic.title, issues: [] };
+    return { title: topic, issues: [] };
   })
 );
 const expandedItems = reactive({});

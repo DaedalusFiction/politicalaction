@@ -8,7 +8,7 @@
       <label for="topic" class="dark:text-white"> Topic</label>
       <select
         id="topic"
-        v-model="formData.topic.title"
+        v-model="formData.topic"
         required
         class="dark:text-white dark:bg-backgroundDarkMode"
       >
@@ -16,9 +16,9 @@
           class="dark:text-white"
           v-for="(topic, index) in topics"
           :key="index"
-          :value="topic.title"
+          :value="topic"
         >
-          {{ topic.title }}
+          {{ topic }}
         </option>
       </select>
     </div>
@@ -109,7 +109,7 @@ import { db } from "~/firebase.config";
 import { topics } from "~/data";
 const { issue } = defineProps(["issue"]);
 const emptyForm = {
-  topic: { title: "" },
+  topic: "",
   title: "",
   description: "",
   impact: "",
@@ -125,8 +125,7 @@ const formData = ref(emptyForm);
 const documentFile = ref(null);
 
 const handleAddExternalLink = () => {
-  console.log(formData.value.externalLinks);
-  formData.value.externalLinks.push({
+  formData.externalLinks.push({
     title: externalLinkTitle.value,
     href: externalLinkHref.value,
   });
@@ -144,7 +143,7 @@ const handleRemoveExternalLink = (index) => {
 onMounted(() => {
   if (issue) {
     formData.value = {
-      topic: issue.data().topic.title,
+      topic: issue.data().topic,
       description: issue.data().description,
       title: issue.data().title,
       impact: issue.data().impact,
@@ -160,16 +159,16 @@ onMounted(() => {
 const submitForm = async () => {
   if (issue) {
     await useUpdateDocument(
-      `issues/topics/${issue.data().topic.title}`,
+      `issues/topics/${issue.data().topic}`,
       formData.value,
       documentFile.value,
       issue.id
     );
     emit("update");
   } else {
-    console.log(formData.value.topic.title);
+    console.log(formData.value.topic);
     await useUploadDocument(
-      `issues/topics/${formData.value.topic.title}`,
+      `issues/topics/${formData.value.topic}`,
       formData.value,
       documentFile.value
     );
@@ -179,9 +178,7 @@ const submitForm = async () => {
 };
 const handleDeleteDocument = async () => {
   try {
-    await deleteDoc(
-      doc(db, `issues/topics/${issue.data().topic.title}`, issue.id)
-    );
+    await deleteDoc(doc(db, `issues/topics/${issue.data().topic}`, issue.id));
     useSnackbar("Document successfully deleted");
     emit("update");
   } catch {

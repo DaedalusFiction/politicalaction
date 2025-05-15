@@ -8,6 +8,27 @@ const pages = [
   { title: "search", href: "/search" },
 ];
 const topics = [
+  "animals",
+  "education",
+  "health",
+  "labor",
+  "criminal",
+  "technology",
+  "environment",
+  "governance",
+];
+const topicsWithLinks = [
+  { title: "animals", href: "/animals" },
+  { title: "education", href: "/education" },
+  { title: "health", href: "/health" },
+  { title: "labor", href: "/labor" },
+  { title: "criminal", href: "/criminal" },
+  { title: "technology", href: "/technology" },
+  { title: "environment", href: "/environment" },
+  {
+    title: "governance",
+    href: "/governance",
+  },
   { title: "animals", href: "/animals" },
   { title: "education", href: "/education" },
   { title: "health", href: "/health" },
@@ -32,6 +53,7 @@ export {
   siteName,
   siteDescription,
   topics,
+  topicsWithLinks,
   siteURL,
   pages,
   socialMediaLinks,
