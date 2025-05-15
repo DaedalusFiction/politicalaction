@@ -12,12 +12,12 @@ const topics = [
   { title: "education", href: "/education" },
   { title: "health", href: "/health" },
   { title: "labor", href: "/labor" },
-  { title: "criminal justice", href: "/criminal-justice" },
+  { title: "criminal", href: "/criminal" },
   { title: "technology", href: "/technology" },
   { title: "environment", href: "/environment" },
   {
-    title: "governance and voting rights",
-    href: "/governance-and-voting-rights",
+    title: "governance",
+    href: "/governance",
   },
 ];
 

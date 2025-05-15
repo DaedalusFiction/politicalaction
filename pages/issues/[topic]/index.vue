@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutPageHeader :header="route.params.topic.replaceAll('-', ' ')" />
+    <LayoutPageHeader :header="route.params.topic" />
     <div class="max-w-screen-lg mx-auto px-3 flex flex-col">
       <div v-for="(issue, index) in issues" :key="index">
         <LayoutIssue :issue="issue" />
