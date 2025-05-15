@@ -13,6 +13,7 @@
   --color-secondary: #a30000;
   --color-secondary-dark-mode: #f2542d;
   --color-background: #f7f0f0;
+  --color-backgroundDarkMode: #1a1a1a;
   --color-background-accent: #e3dbdc;
 
   --font-header: JetBrainsMono;
@@ -33,12 +34,12 @@ h6 {
 }
 
 p,
-a {
+a, label {
   @apply text-dark dark:text-light;
 }
 
 li {
-  @apply font-sans ml-5;
+  @apply font-sans ml-5 text-dark dark:text-light;
 }
 
 hr {
@@ -69,7 +70,7 @@ label {
     @apply md:grid grid-cols-12 mx-auto mt-8 max-w-5xl gap-8;
   }
   .btn {
-    @apply py-2 px-3 w-fit font-sans text-center cursor-pointer bg-secondary dark:bg-primary duration-100 uppercase text-white rounded;
+    @apply py-2 px-3 w-fit font-sans text-center cursor-pointer bg-secondary duration-100 uppercase text-white rounded;
   }
   .btn-disabled {
     @apply cursor-not-allowed bg-gray-400;

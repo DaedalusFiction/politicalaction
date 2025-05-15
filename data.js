@@ -7,7 +7,19 @@ const pages = [
   { title: "guides", href: "/guides" },
   { title: "search", href: "/search" },
 ];
-const issues = [];
+const topics = [
+  { title: "animals", href: "/animals" },
+  { title: "education", href: "/education" },
+  { title: "health", href: "/health" },
+  { title: "labor", href: "/labor" },
+  { title: "criminal justice", href: "/criminal-justice" },
+  { title: "technology", href: "/technology" },
+  { title: "environment", href: "/environment" },
+  {
+    title: "governance and voting rights",
+    href: "/governance-and-voting-rights",
+  },
+];
 
 const socialMediaLinks = [
   { title: "Instagram", href: "https://Instagram.com" },
@@ -19,7 +31,7 @@ const email = "djs41286@gmail.com";
 export {
   siteName,
   siteDescription,
-  issues,
+  topics,
   siteURL,
   pages,
   socialMediaLinks,

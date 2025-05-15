@@ -7,22 +7,23 @@
         class="image-container"
         alt=""
       />
-      <div v-else class="bg-gray-300 border flex items-center p-2">
-        <p class="text-center dark:text-darkMuted">No Image Selected</p>
-      </div>
+      
+        <p v-else class="text-center dark:text-white">No Image Selected</p>
+      
     </div>
     <div>
-      <label class="block font-bold mb-2" for="image"> Select Image </label>
+      <label class="block font-bold mb-2" for="image"> <p>Select Image</p> </label>
       <input
         required
         id="image"
         accept=".jpg,.jpeg,.webp,.png"
+        class="dark:text-white mb-1"
         type="file"
         @change="handleSelectImage"
         :disabled="isProcessing"
       />
       <p v-if="isProcessing" class="text-xs mt-1">Processing image...</p>
-      <p class="text-xs italic dark:text-dark">
+      <p class="text-xs italic dark:text-white">
         File name must end in .jpg, .jpeg, .webp, or .png. Maximum file size:
         1MB
       </p>

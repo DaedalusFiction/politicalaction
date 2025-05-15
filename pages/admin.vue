@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="col-span-10 p-3">
-          <AdminPhotographList v-if="selectedPanel === 'Portfolio'" />
+          <AdminIssueList v-if="selectedPanel === 'Issues'" />
         </div>
       </div>
     </div>
@@ -42,8 +42,8 @@ definePageMeta({
   layout: "admin",
 });
 const admin = ref(false);
-const menu = ref([{ name: "Portfolio", icon: bookIcon }]);
-const selectedPanel = ref("Portfolio");
+const menu = ref([{ name: "Issues", icon: bookIcon }]);
+const selectedPanel = ref("Issues");
 
 const handleSignIn = async () => {
   const user = await login();

@@ -41,7 +41,7 @@ module.exports = {
         dark: "#2c2c2c",
         darkMuted: "#373737",
         background: "var(--color-background)",
-        backgroundDarkMode: "#110d17",
+        backgroundDarkMode: "var(--color-backgroundDarkMode)",
         backgroundAccent: "var(--color-background-accent)",
         backgroundAccentDarkMode: "#343633",
         backgroundHover: "#424242",

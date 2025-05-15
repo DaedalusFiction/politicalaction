@@ -7,15 +7,18 @@ import { ref as firebaseRef } from "firebase/storage";
 export default async function useUploadDocument(
   collectionName,
   formData,
-  imageFile
+  documentFile
 ) {
   const uploadDoc = async () => {
-    if (imageFile) {
-      const imageFileRef = firebaseRef(
+    if (documentFile) {
+      const documentFileRef = firebaseRef(
         storage,
-        `${collectionName}/${Date.now() + imageFile.name}`
+        `${collectionName}/${Date.now() + documentFile.name}`
       );
-      const uploadImageTask = uploadBytesResumable(imageFileRef, imageFile);
+      const uploadImageTask = uploadBytesResumable(
+        documentFileRef,
+        documentFile
+      );
       //TODO: Fix this so that it awaits the image upload before uploading md file
       uploadImageTask.on(
         "state_changed",
@@ -32,6 +35,7 @@ export default async function useUploadDocument(
                 });
                 useSnackbar("Article created");
               } catch (error) {
+                console.log(error.message);
                 useSnackbar("Error creating article");
               }
             }
@@ -46,7 +50,8 @@ export default async function useUploadDocument(
         });
         useSnackbar("Article created");
       } catch (error) {
-        useSnackbar("Error creating article");
+        console.log(error.message);
+        useSnackbar("Error creating article!");
       }
     }
   };

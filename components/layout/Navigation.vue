@@ -2,7 +2,7 @@
   <header :class="selectedImage && 'blur-md'" class="fixed w-full top-0 z-20">
     <div>
       <div
-        class="hidden lg:grid grid-cols-12 gap-3 px-4 py-2 mx-auto bg-background"
+        class="hidden lg:grid grid-cols-12 gap-3 px-4 py-2 mx-auto bg-background dark:bg-backgroundDarkMode"
       >
         <div class="col-span-6 flex gap-3 items-center">
           <NuxtLink
@@ -83,7 +83,7 @@ const handleExpandNavigation = () => {
 
 <style scoped>
 .scrolled {
-  @apply bg-background dark:bg-backgroundAccent;
+  @apply bg-background dark:bg-backgroundDarkMode;
 }
 
 .navigationExpanded {

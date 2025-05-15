@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col bg-background justify-between">
+  <div class="relative flex flex-col bg-background dark:bg-backgroundDarkMode justify-between">
     <div @click="handleCloseMenus">
       <LayoutNavigation />
       <div class="max-w-screen-2xl mx-auto">

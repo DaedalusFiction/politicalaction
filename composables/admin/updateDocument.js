@@ -7,16 +7,16 @@ import { ref as firebaseRef } from "firebase/storage";
 export default async function useUpdateDocument(
   collectionName,
   formData,
-  imageFile,
+  documentfile,
   documentID
 ) {
   const uploadDoc = async () => {
-    if (imageFile) {
-      const imageFileRef = firebaseRef(
+    if (documentfile) {
+      const documentfileRef = firebaseRef(
         storage,
-        `${collectionName}/${Date.now() + imageFile.name}`
+        `${collectionName}/${Date.now() + documentfile.name}`
       );
-      const uploadImageTask = uploadBytesResumable(imageFileRef, imageFile);
+      const uploadImageTask = uploadBytesResumable(documentfileRef, documentfile);
       //TODO: Fix this so that it awaits the image upload before uploading md file
       uploadImageTask.on(
         "state_changed",

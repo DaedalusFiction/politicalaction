@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:grid grid-cols-12 gap-3">
     <div class="col-span-6">
-      <h4 class="mb-2">Publish a photograph listing</h4>
+      <h4 class="mb-2">Create an issue</h4>
       <button
         class="btn"
         v-if="!newDocumentPanelExpanded"
@@ -10,38 +10,33 @@
         Create
       </button>
       <div v-else class="p-2">
-        <AdminPhotographForm @update="handleRefreshList" />
+        <AdminIssueForm @update="handleRefreshList" />
       </div>
     </div>
     <div class="col-span-6">
-      <h4 class="mb-2">Manage existing photographs</h4>
+      <h4 class="mb-2">Manage existing issues</h4>
       <div class="" v-for="(category, index) in categories" :key="index">
         <h5>{{ category.title }}</h5>
-        <div v-for="(photograph, index) in category.photographs" :key="index">
-          <div
-            v-if="photograph.data().category === category.title"
-            class="rounded transition my-1 border"
-          >
+        <div v-for="(issue, index) in category.issues" :key="index">
+          <div class="rounded transition my-1 border">
             <div
-              @click="toggleExpand(photograph.id)"
+              @click="toggleExpand(issue.id)"
               class="flex p-2 justify-between rounded cursor-pointer hover:bg-backgroundAccent dark:hover:bg-backgroundAccentDarkMode"
               :class="
-                expandedItems[photograph.id] &&
+                expandedItems[issue.id] &&
                 'bg-backgroundAccent dark:bg-backgroundAccentDarkMode'
               "
             >
-              <p>{{ photograph.data().alt || "No Title" }}</p>
+              <p>{{ issue.data().title || "No Title" }}</p>
               <p>
-                {{
-                  new Date(photograph.data().dateUploaded).toLocaleDateString()
-                }}
+                {{ new Date(issue.data().dateUploaded).toLocaleDateString() }}
               </p>
             </div>
-            <div v-if="expandedItems[photograph.id]">
+            <div v-if="expandedItems[issue.id]">
               <div class="p-3">
-                <AdminPhotographForm
-                  :photograph="photograph"
-                  @update="handleRefreshList(photograph.id)"
+                <AdminIssueForm
+                  :issue="issue"
+                  @update="handleRefreshList(issue.id)"
                 />
               </div>
             </div>
@@ -60,12 +55,12 @@
 import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "~/firebase.config";
 import { ref, reactive } from "vue";
-import { AdminPhotographForm } from "#components";
-import { issues } from "~/data";
+import { AdminIssueForm } from "#components";
+import { topics } from "~/data";
 
 const categories = reactive(
-  issues.map((project) => {
-    return { title: project.title, photographs: [] };
+  topics.map((topic) => {
+    return { title: topic.title, issues: [] };
   })
 );
 const expandedItems = reactive({});
@@ -77,19 +72,13 @@ const toggleExpandNewDocument = () => {
 };
 
 const getDocuments = async (total) => {
-  console.log(categories);
   categories.forEach(async (category, index) => {
-    console.log(category.title, index);
-    const photographsRef = collection(
-      db,
-      "photographs",
-      "categories",
-      category.title
-    );
+    const issuesRef = collection(db, "issues", "topics", category.title);
     const items = await getDocs(
-      query(photographsRef, limit(total), orderBy("dateUploaded", "desc"))
+      query(issuesRef, limit(total), orderBy("dateUploaded", "desc"))
     );
-    categories[index].photographs = items.docs;
+    console.log(items.docs);
+    categories[index].issues = items.docs;
   });
 };
 
@@ -102,8 +91,8 @@ const handleShowMoreDocuments = () => {
   getDocuments(numberOfShownDocuments.value);
 };
 
-const toggleExpand = (photographId) => {
-  expandedItems[photographId] = !expandedItems[photographId];
+const toggleExpand = (issueId) => {
+  expandedItems[issueId] = !expandedItems[issueId];
 };
 
 const handleRefreshList = (articleId) => {
