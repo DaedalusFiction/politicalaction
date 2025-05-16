@@ -50,18 +50,15 @@ const externalLink = ref("");
 const docRef = doc(db, "documents", props.documentID);
 
 const handleAddExternalLink = async () => {
-  console.log(props.document.externalLinks);
   const update = {
     externalSite: externalSite.value,
     externalLink: externalLink.value,
   };
   if (props.document.externalLinks) {
-    console.log("Updating Existing");
     await updateDoc(docRef, {
       externalLinks: arrayUnion(update),
     });
   } else {
-    console.log("Creating New");
     await updateDoc(docRef, {
       externalLinks: [update],
     });

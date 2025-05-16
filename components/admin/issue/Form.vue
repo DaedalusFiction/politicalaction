@@ -8,6 +8,7 @@
       <label for="topic" class="dark:text-white"> Topic</label>
       <select
         id="topic"
+        :disabled="issue"
         v-model="formData.topic"
         required
         class="dark:text-white dark:bg-backgroundDarkMode"
@@ -23,6 +24,10 @@
       </select>
     </div>
     <div class="mb-4 flex flex-col gap-2">
+      <label for="description"> Description</label>
+      <textarea rows="4" v-model="formData.description" />
+    </div>
+    <div class="mb-4 flex flex-col gap-2">
       <label for="impact"> impact</label>
       <input
         type="text"
@@ -30,10 +35,7 @@
         placeholder="e.g. city, state"
       />
     </div>
-    <div class="mb-4 flex flex-col gap-2">
-      <label for="recommendedAudience"> Recommended Audience</label>
-      <input type="text" v-model="formData.recommendedAudience" />
-    </div>
+
     <div class="mb-4 flex flex-col gap-2">
       <label for="timeForAction"> Time for Action</label>
       <input type="text" v-model="formData.timeForAction" />
@@ -46,16 +48,18 @@
         placeholder="https://..."
       />
     </div>
-    <AdminExternalLinkSelector v-bind:form-data="formData" />
-    <div class="mb-4 flex flex-col gap-2">
-      <label for="contributors"> Contributors</label>
-      <input type="text" v-model="formData.contributors" />
-    </div>
-    <!-- <AdminPDFSelector v-model:model-value="documentFile" /> -->
-    <div class="mb-4 flex flex-col gap-2">
-      <label for="description"> Description</label>
-      <textarea v-model="formData.description" />
-    </div>
+    <AdminExternalLinkSelector
+      v-model:links="formData.recommendedAudience"
+      title="Recommended Audience"
+    />
+    <AdminExternalLinkSelector
+      v-model:links="formData.externalLinks"
+      title="External Links"
+    />
+    <AdminExternalLinkSelector
+      v-model:links="formData.contributors"
+      title="Contributors"
+    />
 
     <div class="flex gap-2">
       <button class="btn" @click="submitForm">
@@ -84,7 +88,7 @@ const emptyForm = {
   impact: "",
   timeForAction: "",
   googleDocLink: "",
-  recommendedAudience: "",
+  recommendedAudience: [],
   contributors: [],
   externalLinks: [],
 };
@@ -118,7 +122,6 @@ const submitForm = async () => {
     );
     emit("update");
   } else {
-    console.log(formData.value.topic);
     await useUploadDocument(
       `issues/topics/${formData.value.topic}`,
       formData.value,

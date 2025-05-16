@@ -1,6 +1,6 @@
 <template>
   <div class="border rounded p-3 mb-4">
-    <p>External Links</p>
+    <p>{{ title }}</p>
     <div class="mb-4 flex flex-col gap-2">
       <label for="externalLinkTitle">Title</label>
       <input type="text" v-model="externalLinkTitle" />
@@ -11,7 +11,7 @@
     </div>
     <button class="btn mb-3" @click="handleAddExternalLink">Add Link</button>
     <div
-      v-for="(link, index) in formData.externalLinks"
+      v-for="(link, index) in links"
       :key="index"
       class="flex justify-between gap-2"
     >
@@ -30,25 +30,45 @@
 </template>
 
 <script setup>
+import { ref, defineProps, defineEmits } from "vue";
+
 const externalLinkTitle = ref("");
 const externalLinkHref = ref("");
-const { formData } = defineProps(["formData"]);
-const { formData: formDataEmit } = defineEmits(["formData"]);
+
+const props = defineProps({
+  links: {
+    type: Array,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["update:links"]);
 
 const handleAddExternalLink = () => {
-  formData.externalLinks.push({
-    title: externalLinkTitle.value,
-    href: externalLinkHref.value,
-  });
+  const updatedLinks = [
+    ...props.links,
+    {
+      title: externalLinkTitle.value,
+      href: externalLinkHref.value,
+    },
+  ];
+
+  emit("update:links", updatedLinks);
   externalLinkTitle.value = "";
   externalLinkHref.value = "";
 };
 
 const handleRemoveExternalLink = (index) => {
-  formData.externalLinks = [
-    ...formData.externalLinks.slice(0, index),
-    ...formData.externalLinks.slice(index + 1),
+  const updatedLinks = [
+    ...props.links.slice(0, index),
+    ...props.links.slice(index + 1),
   ];
+
+  emit("update:links", updatedLinks);
 };
 </script>
 

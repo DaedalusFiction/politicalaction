@@ -2,18 +2,20 @@
   <div class="max-w-screen-2xl mx-auto">
     <div class="py-12 md:mt-24 px-3 flex flex-col md:grid grid-cols-12 gap-3">
       <div class="col-span-6 flex flex-col gap-3 relative">
-        <p class="text-xl md:text-3xl mb-12 sticky top-12">
-          <span class="font-bold font-header">VAOA</span> is an online
-          repository for letter templates and information on becoming
-          politically active in Virginia
-        </p>
-        <p>
-          Not sure where to start? Check out our
-          <NuxtLink class="underline link" href="/getting-started"
-            >Getting Started</NuxtLink
-          >
-          guide!
-        </p>
+        <div class="sticky top-36">
+          <p class="text-xl md:text-3xl mb-12">
+            <span class="font-bold font-header">VAOA</span> is an online
+            repository for letter templates and information on becoming
+            politically active in Virginia
+          </p>
+          <p>
+            Not sure where to start? Check out our
+            <NuxtLink class="underline link" href="/getting-started"
+              >Getting Started</NuxtLink
+            >
+            guide!
+          </p>
+        </div>
       </div>
       <div class="col-span-6 flex flex-col gap-3">
         <p class="text-xl">

@@ -4,15 +4,15 @@
       @click="expanded = true"
       class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
     >
-      <p class="text-2xl my-3 uppercase font-bold">
+      <p class="text-3xl my-3 uppercase font-bold">
         {{ issue.title || "Title Unavailable" }}
       </p>
-      <p class="text-2xl transition" :class="expanded && 'rotate-90'">
+      <!-- <p class="text-2xl transition" :class="expanded && 'rotate-90'">
         &RightArrow;
-      </p>
+      </p> -->
     </button>
-    <div v-if="expanded" class="mb-6">
-      <p class="mb-3">{{ issue.description }}</p>
+    <div v-if="expanded" class="mb-6 whitespace-pre-wrap">
+      <p class="mb-3 ml-8">{{ issue.description }}</p>
       <div
         class="flex flex-col md:grid grid-cols-12 justify-between gap-3 md:items-end"
       >
@@ -25,14 +25,44 @@
             <span class="font-bold">Impact:</span>
             <span>{{ issue.impact }}</span>
           </p>
-          <p>
-            <span class="font-bold">Recommended Audience:</span>
-            <span>{{ issue.recommendedAudience }}</span>
-          </p>
-          <p>
-            <span class="font-bold">Contributors:</span>
-            <span>{{ issue.contributors }}</span>
-          </p>
+          <div
+            v-if="
+              issue.recommendedAudience && issue.recommendedAudience.length > 0
+            "
+            class="flex gap-3 justify-between mt-3"
+          >
+            <p class="font-bold w-fit">Recommended Audience:</p>
+            <div class="flex flex-col gap-1">
+              <NuxtLink
+                target="_blank"
+                rel="noreferrer"
+                class="link underline text-end"
+                v-for="(externalLink, index) in issue.recommendedAudience"
+                :key="index"
+                :href="externalLink.href"
+                >{{ externalLink.title }}</NuxtLink
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-span-6 flex-col flex">
+          <div
+            v-if="issue.contributors && issue.contributors.length > 0"
+            class="flex gap-3 justify-between mt-3"
+          >
+            <p class="font-bold w-fit">Contributors:</p>
+            <div class="flex flex-col gap-1">
+              <NuxtLink
+                target="_blank"
+                rel="noreferrer"
+                class="link underline text-end"
+                v-for="(externalLink, index) in issue.contributors"
+                :key="index"
+                :href="externalLink.href"
+                >{{ externalLink.title }}</NuxtLink
+              >
+            </div>
+          </div>
           <div
             v-if="issue.externalLinks && issue.externalLinks.length > 0"
             class="flex gap-3 justify-between mt-3"
@@ -42,7 +72,7 @@
               <NuxtLink
                 target="_blank"
                 rel="noreferrer"
-                class="link underline"
+                class="link underline text-end"
                 v-for="(externalLink, index) in issue.externalLinks"
                 :key="index"
                 :href="externalLink.href"
@@ -50,11 +80,11 @@
               >
             </div>
           </div>
-        </div>
-        <div class="col-span-6 flex justify-end items-end">
-          <NuxtLink class="btn" :href="issue.googleDocLink">
-            View Letter Template
-          </NuxtLink>
+          <div class="flex justify-end mt-3">
+            <NuxtLink class="btn" :href="issue.googleDocLink">
+              View Letter Template
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>

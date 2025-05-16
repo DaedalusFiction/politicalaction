@@ -16,7 +16,10 @@ export default async function useUpdateDocument(
         storage,
         `${collectionName}/${Date.now() + documentfile.name}`
       );
-      const uploadImageTask = uploadBytesResumable(documentfileRef, documentfile);
+      const uploadImageTask = uploadBytesResumable(
+        documentfileRef,
+        documentfile
+      );
       //TODO: Fix this so that it awaits the image upload before uploading md file
       uploadImageTask.on(
         "state_changed",
@@ -41,15 +44,12 @@ export default async function useUpdateDocument(
       );
     } else {
       try {
-        console.log("updating");
-        console.log(formData);
         await updateDoc(doc(db, collectionName, documentID), {
           ...formData,
           dateModified: Date.now(),
         });
         useSnackbar("Document updated");
       } catch (error) {
-        console.log(error.message);
         useSnackbar("Error creating article");
       }
     }

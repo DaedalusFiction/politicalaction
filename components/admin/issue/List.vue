@@ -77,7 +77,6 @@ const getDocuments = async (total) => {
     const items = await getDocs(
       query(issuesRef, limit(total), orderBy("dateUploaded", "desc"))
     );
-    console.log(items.docs);
     categories[index].issues = items.docs;
   });
 };

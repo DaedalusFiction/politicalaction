@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutPageHeader :header="route.params.topic" />
+    <LayoutPageHeader :header="route.params.topic + ' issues'" />
     <div class="max-w-screen-lg mx-auto px-3 flex flex-col">
       <div v-for="(issue, index) in issues" :key="index">
         <LayoutIssue :issue="issue" />
@@ -28,12 +28,7 @@ onMounted(async () => {
       ...doc.data(),
     };
   });
-  console.log(issues.value);
 });
-
-const handleDownloadTemplate = () => {
-  console.log("Downloading....");
-};
 </script>
 
 <style scoped></style>

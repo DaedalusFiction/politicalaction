@@ -29,7 +29,6 @@ onMounted(async () => {
     const issuesRef = collection(db, "issues", "topics", topic);
     try {
       const total = await getCountFromServer(issuesRef);
-      console.log(topic, total.data().count);
       totals.value[totals.value.findIndex((item) => item.topic === topic)] = {
         topic: topic,
         total: total.data().count,
