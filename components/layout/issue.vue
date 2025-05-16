@@ -81,7 +81,12 @@
             </div>
           </div>
           <div class="flex justify-end mt-3">
-            <NuxtLink class="btn" :href="issue.googleDocLink">
+            <NuxtLink
+              class="btn"
+              :href="issue.googleDocLink"
+              target="_blank"
+              rel="noreferrer"
+            >
               View Letter Template
             </NuxtLink>
           </div>
