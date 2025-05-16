@@ -1,10 +1,12 @@
 <template>
   <div class="border-b">
     <button
-      @click="expanded = !expanded"
+      @click="expanded = true"
       class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
     >
-      <p class="text-2xl my-3 uppercase font-bold">{{ issue.title }}</p>
+      <p class="text-2xl my-3 uppercase font-bold">
+        {{ issue.title || "Title Unavailable" }}
+      </p>
       <p class="text-2xl transition" :class="expanded && 'rotate-90'">
         &RightArrow;
       </p>
@@ -32,7 +34,7 @@
             <span>{{ issue.contributors }}</span>
           </p>
           <div
-            v-if="issue.externalLinks.length > 0"
+            v-if="issue.externalLinks && issue.externalLinks.length > 0"
             class="flex gap-3 justify-between mt-3"
           >
             <p class="font-bold w-fit">External Links:</p>
@@ -61,7 +63,7 @@
 
 <script setup>
 const { issue } = defineProps(["issue"]);
-const expanded = ref(false);
+const expanded = ref(true);
 </script>
 
 <style scoped>
