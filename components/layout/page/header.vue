@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 md:pt-32 mb-12 px-3 max-w-screen-lg mx-auto">
+  <div class="pt-16 md:pt-32 mb-12 px-3 max-w-screen-xl mx-auto">
     <h1 class="text-3xl md:text-5xl">
       {{ header }}
     </h1>

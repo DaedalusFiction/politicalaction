@@ -4,7 +4,7 @@
       @click="expanded = true"
       class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
     >
-      <p class="text-3xl my-3 uppercase font-bold">
+      <p class="text-xl md:text-3xl my-3 uppercase font-bold">
         {{ issue.title || "Title Unavailable" }}
       </p>
       <!-- <p class="text-2xl transition" :class="expanded && 'rotate-90'">
@@ -13,9 +13,7 @@
     </button>
     <div v-if="expanded" class="mb-6 whitespace-pre-wrap">
       <p class="mb-3 ml-8">{{ issue.description }}</p>
-      <div
-        class="flex flex-col md:grid grid-cols-12 justify-between gap-3 md:items-end"
-      >
+      <div class="flex flex-col md:grid grid-cols-12 gap-12">
         <div class="fields col-span-6">
           <p>
             <span class="font-bold">Time for Action:</span>
@@ -48,7 +46,7 @@
         <div class="col-span-6 flex-col flex">
           <div
             v-if="issue.contributors && issue.contributors.length > 0"
-            class="flex gap-3 justify-between mt-3"
+            class="flex gap-3 justify-between"
           >
             <p class="font-bold w-fit">Contributors:</p>
             <div class="flex flex-col gap-1">
@@ -65,7 +63,7 @@
           </div>
           <div
             v-if="issue.externalLinks && issue.externalLinks.length > 0"
-            class="flex gap-3 justify-between mt-3"
+            class="flex gap-3 justify-between"
           >
             <p class="font-bold w-fit">External Links:</p>
             <div class="flex flex-col gap-1">

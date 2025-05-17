@@ -4,7 +4,7 @@ const siteDescription = "Template repository for political activism";
 
 const pages = [
   { title: "issues", href: "/issues" },
-  { title: "guides", href: "/guides" },
+  { title: "opportunities", href: "/opportunities" },
   { title: "search", href: "/search" },
 ];
 const topics = [

@@ -1,7 +1,7 @@
 <template>
   <div>
     <LayoutPageHeader :header="route.params.topic + ' issues'" />
-    <div class="max-w-screen-lg mx-auto px-3 flex flex-col">
+    <div class="max-w-screen-lg mx-auto px-3 flex flex-col gap-12">
       <div v-for="(issue, index) in issues" :key="index">
         <LayoutIssue :issue="issue" />
       </div>
