@@ -7,10 +7,10 @@ export default async function useSearch(
   tagFilters
 ) {
   const algoliaClient = algoliasearch(
-    "FKYFNWBQW2",
-    "7f6c89772171e482cc7a9c7686b999a5"
+    "JESZ3NCHL8",
+    "b3dbc69bf4fe58469fd77203a872549d"
   );
-  const algoliaIndex = algoliaClient.initIndex("mvdbgames");
+  const algoliaIndex = algoliaClient.initIndex("templates");
 
   try {
     const { hits, nbHits } = await algoliaIndex.search(query, {

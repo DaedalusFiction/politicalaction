@@ -1,58 +1,55 @@
 <template>
-  <h2 class="page-header">Search</h2>
-  <div class="md:flex gap-3 justify-between items-center">
-    <p>Explore issues</p>
-    <div class="flex gap-2 mb-2 items-center">
-      <label for="hitsPerPage"><p>Results Per Page:</p></label>
-      <select name="Results Per Page" id="hitsPerPage" v-model="hitsPerPage">
-        <option value="10">10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+  <div class="max-w-screen-xl mx-auto px-4 py-8">
+    <h2 class="page-header">Search</h2>
+    <div class="md:flex gap-3 justify-between items-center">
+      <p>Explore issues</p>
+      <div class="flex gap-2 mb-2 items-center">
+        <label for="hitsPerPage"><p>Results Per Page:</p></label>
+        <select name="Results Per Page" id="hitsPerPage" v-model="hitsPerPage">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
     </div>
-  </div>
-
-  <div class="flex flex-col md:flex-row gap-3 mb-3">
-    <input
-      type="text"
-      class="grow"
-      id="query"
-      v-model="searchQuery"
-      placeholder="Search Publications..."
-      @keyup.enter="getSearchResults(searchQuery)"
-    />
-    <button class="btn w-full md:w-fit" @click="getSearchResults(searchQuery)">
-      Search
-    </button>
-  </div>
-  <label class="hidden" for="query">Search Query</label>
-
-  <p v-if="searchResults.length > 0" class="text-sm mb-3">
-    Showing 1-{{ searchResults.length }} of {{ totalHits }} total results
-  </p>
-  <p v-else>No documents found.</p>
-
-  <div v-if="searchResults && searchResults.length > 0">
-    <div v-for="(result, index) in searchResults" :key="index">
-      <p>hi</p>
-      <hr />
+    <div class="flex flex-col md:flex-row gap-3 mb-3">
+      <input
+        type="text"
+        class="grow"
+        id="query"
+        v-model="searchQuery"
+        placeholder="Search Publications..."
+        @keyup.enter="getSearchResults(searchQuery)"
+      />
+      <button
+        class="btn w-full md:w-fit"
+        @click="getSearchResults(searchQuery)"
+      >
+        Search
+      </button>
     </div>
-    <button
-      class="btn"
-      v-if="searchResults.length < totalHits"
-      @click="handleLoadMorePublications"
-    >
-      Load More Results
-    </button>
+    <label class="hidden" for="query">Search Query</label>
+    <p v-if="searchResults && searchResults.length > 0" class="text-sm mb-3">
+      Showing 1-{{ searchResults.length }} of {{ totalHits }} total results
+    </p>
+    <p v-else>No documents found.</p>
+    <div v-if="searchResults && searchResults.length > 0" class="mt-8">
+      <div v-for="(result, index) in searchResults" :key="index">
+        <LayoutSearchResult :result="result" />
+      </div>
+      <button
+        class="btn"
+        v-if="searchResults.length < totalHits"
+        @click="handleLoadMorePublications"
+      >
+        Load More Results
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "page",
-});
-
 const route = useRoute();
 
 import { filters } from "~/data";
@@ -111,7 +108,7 @@ const getSearchResults = async (query) => {
     formattedFilters,
     formattedTagFilters
   );
-
+  console.log(hits);
   totalHits.value = nbHits;
   searchResults.value = hits;
 };

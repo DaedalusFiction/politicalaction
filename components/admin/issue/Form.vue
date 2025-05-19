@@ -118,7 +118,7 @@ onMounted(() => {
 const submitForm = async () => {
   if (issue) {
     await useUpdateDocument(
-      `templates}`,
+      `templates`,
       formData.value,
       documentFile.value,
       issue.id
