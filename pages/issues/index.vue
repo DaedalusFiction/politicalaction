@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { collection, getCountFromServer } from "firebase/firestore";
+import { collection, getCountFromServer, getDocs } from "firebase/firestore";
 import { topics } from "~/data";
 import { db } from "~/firebase.config";
 const totals = ref(
@@ -25,22 +25,8 @@ const totals = ref(
 );
 
 onMounted(async () => {
-  topics.forEach(async (topic) => {
-    const issuesRef = collection(db, "issues", "topics", topic);
-    try {
-      const total = await getCountFromServer(issuesRef);
-      totals.value[totals.value.findIndex((item) => item.topic === topic)] = {
-        topic: topic,
-        total: total.data().count,
-      };
-    } catch {
-      console.error("Error fetching total issues for topic: ", topic);
-      totals.value[totals.value.findIndex((item) => item.topic === topic)] = {
-        topic: topic,
-        total: 0,
-      };
-    }
-  });
+  const issuesRef = collection(db, "templates");
+  const docs = await getDocs(issuesRef);
 });
 </script>
 

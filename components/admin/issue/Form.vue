@@ -68,6 +68,9 @@
       <button v-if="issue" class="btn" @click="handleDeleteDocument">
         Delete
       </button>
+      <!-- <button v-if="issue" class="btn" @click="handleRelocateDocument">
+        Relocate
+      </button> -->
     </div>
   </div>
 </template>
@@ -115,30 +118,31 @@ onMounted(() => {
 const submitForm = async () => {
   if (issue) {
     await useUpdateDocument(
-      `issues/topics/${issue.data().topic}`,
+      `templates}`,
       formData.value,
       documentFile.value,
       issue.id
     );
     emit("update");
   } else {
-    await useUploadDocument(
-      `issues/topics/${formData.value.topic}`,
-      formData.value,
-      documentFile.value
-    );
+    await useUploadDocument(`templates`, formData.value, documentFile.value);
 
     emit("update");
   }
 };
 const handleDeleteDocument = async () => {
   try {
-    await deleteDoc(doc(db, `issues/topics/${issue.data().topic}`, issue.id));
+    await deleteDoc(doc(db, `templates`, issue.id));
     useSnackbar("Document successfully deleted");
     emit("update");
   } catch {
     useSnackbar("Error deleting document");
   }
+};
+const handleRelocateDocument = async () => {
+  await useUploadDocument(`templates`, formData.value, documentFile.value);
+
+  emit("update");
 };
 </script>
 

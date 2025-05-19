@@ -13,13 +13,13 @@
     <div
       v-for="(link, index) in links"
       :key="index"
-      class="flex justify-between gap-2"
+      class="flex justify-between gap-2 max-w-[100%]"
     >
       <div
-        class="rounded bg-backgroundAccent dark:bg-backgroundAccentDarkMode p-2 w-full"
+        class="rounded bg-backgroundAccent dark:bg-backgroundAccentDarkMode p-2 overflow-hidden"
       >
         <p>Title: {{ link.title }}</p>
-        <p>URL: {{ link.href }}</p>
+        <p class="truncate">URL: {{ link.href }}</p>
       </div>
 
       <button @click="handleRemoveExternalLink(index)">

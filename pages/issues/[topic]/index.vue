@@ -10,7 +10,14 @@
 </template>
 
 <script setup>
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "~/firebase.config";
 
 const route = useRoute();
@@ -18,9 +25,14 @@ const issues = ref([]);
 
 onMounted(async () => {
   const topic = route.params.topic;
-  const issuesRef = collection(db, "issues", "topics", topic);
+  const issuesRef = collection(db, "templates");
   const items = await getDocs(
-    query(issuesRef, limit(100), orderBy("dateUploaded", "desc"))
+    query(
+      issuesRef,
+      limit(100),
+      orderBy("dateUploaded", "desc"),
+      where("topic", "==", topic)
+    )
   );
   issues.value = items.docs.map((doc) => {
     return {

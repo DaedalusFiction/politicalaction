@@ -1,7 +1,13 @@
 const siteName = "Virginia Association for Online Activism";
 const siteURL = "vaoa.org";
 const siteDescription = "Template repository for political activism";
-
+const filters = {
+  engine: "",
+  images: [],
+  platforms: [],
+  _tags: [],
+  properties: [],
+};
 const pages = [
   { title: "issues", href: "/issues" },
   { title: "opportunities", href: "/opportunities" },
@@ -40,6 +46,7 @@ const email = "djs41286@gmail.com";
 
 export {
   siteName,
+  filters,
   siteDescription,
   topics,
   topicsWithLinks,
