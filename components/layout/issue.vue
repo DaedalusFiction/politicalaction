@@ -1,17 +1,17 @@
 <template>
   <div class="border-b">
     <button
-      @click="expanded = true"
+      @click="expanded = !expanded"
       class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
     >
-      <p class="text-xl md:text-3xl my-3 uppercase font-bold">
+      <p class="text-xl md:text-3xl link my-3 uppercase font-bold">
         {{ issue.title || "Title Unavailable" }}
       </p>
-      <!-- <p class="text-2xl transition" :class="expanded && 'rotate-90'">
+      <p class="text-2xl transition" :class="expanded && 'rotate-90'">
         &RightArrow;
-      </p> -->
+      </p>
     </button>
-    <div v-if="expanded" class="mb-6 whitespace-pre-wrap">
+    <div v-if="expanded" class="mb-3 whitespace-pre-wrap">
       <p class="mb-3 ml-8">{{ issue.description }}</p>
       <div class="flex flex-col md:grid grid-cols-12 gap-12">
         <div class="fields col-span-6">
@@ -96,7 +96,7 @@
 
 <script setup>
 const { issue } = defineProps(["issue"]);
-const expanded = ref(true);
+const expanded = ref(false);
 </script>
 
 <style scoped>
