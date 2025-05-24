@@ -18,6 +18,8 @@
             community (inspired by a local flier). Feel free to send us new ones
             to add at
             <NuxtLink
+              target="_blank"
+              rel="noreferrer"
               class="link underline"
               href="mailto:virginiacommunitysolutions@gmail.com"
               >virginiacommunitysolutions@gmail.com</NuxtLink
@@ -28,11 +30,15 @@
               <p>
                 Check your
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://www.elections.virginia.gov/registration/how-to-register/"
                   >eligibility</NuxtLink
                 >,
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://www.elections.virginia.gov/citizen-portal/"
                   >register online</NuxtLink
@@ -43,7 +49,11 @@
               <p>
                 Call, meet, write and/or email your (local, state, and federal)
                 representatives. (Hint: This website has templates on our
-                <NuxtLink class="link underline" href="/issues"
+                <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
+                  class="link underline"
+                  href="/issues"
                   >issues</NuxtLink
                 >
                 page!)
@@ -53,6 +63,8 @@
               <p>
                 Take a
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://www.vaprojectpipeline.virginia.gov/studies"
                   >Virginia Department of Transportation (VDOT) survey</NuxtLink
@@ -71,6 +83,8 @@
             <li>
               <p>
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://www.elections.virginia.gov/officer-of-elections/"
                   >Become a poll worker</NuxtLink
@@ -81,6 +95,8 @@
             <li>
               <p>
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://www.elections.virginia.gov/candidatepac-info/becoming-a-candidate/"
                   >Run for office.</NuxtLink
@@ -99,6 +115,8 @@
                 or at events that help your communities and protect your rights.
                 For example, you can email us at
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="mailto:virginiacommunitysolutions@gmail.com"
                   >virginiacommunitysolutions@gmail.com</NuxtLink
@@ -117,6 +135,8 @@
             <li>
               <p>
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://docs.google.com/forms/d/1ZNnYlSHXbLsAW7wGcLK_IJa3Gy2UadF6aauZUlIhF_s/preview"
                   >Submit a letter template to VAOA</NuxtLink
@@ -151,6 +171,8 @@
             when handling public health information (PHI) and personally
             identifiable information (PII). PHI is defined by the
             <NuxtLink
+              target="_blank"
+              rel="noreferrer"
               class="link underline"
               href="https://www.hipaajournal.com/considered-phi-hipaa/#:~:text=Under%20HIPAA%20PHI%20is%20considered,set%20to%20identify%20the%20individual."
               >HIPAA Journal</NuxtLink
@@ -173,6 +195,8 @@
                 Media may pledge to report suicides according to research-based
                 ethical reporting guidelines (see the
                 <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
                   class="link underline"
                   href="https://afsp.org/ethicalreporting/"
                   >AFSP's compiled guidelines</NuxtLink
@@ -216,12 +240,17 @@
             Organizations that take the pledge will have a seal displayed on
             their website with a link to this page. Have an organization you
             would like to take the pledge? Send us their contact information to
-            <NuxtLink class="underline link" :href="`mailto:${email}`">{{
-              email
-            }}</NuxtLink
+            <NuxtLink
+              target="_blank"
+              rel="noreferrer"
+              class="underline link"
+              :href="`mailto:${email}`"
+              >{{ email }}</NuxtLink
             >. Fill out
             <NuxtLink
               class="link underline"
+              target="_blank"
+              rel="noreferrer"
               href="https://docs.google.com/forms/d/e/1FAIpQLSc-zmcj_o93xscjhtiHzBvPYlUExqcHQptRF2BY4Zb613LrbQ/viewform?usp=dialog"
               >this form</NuxtLink
             >
