@@ -51,8 +51,13 @@
             </li>
             <li>
               <p>
-                Take a Virginia Department of Transportation (VDOT) survey for
-                potential road or transportation related projects in your
+                Take a
+                <NuxtLink
+                  class="link underline"
+                  href="https://www.vaprojectpipeline.virginia.gov/studies"
+                  >Virginia Department of Transportation (VDOT) survey</NuxtLink
+                >
+                for potential road or transportation related projects in your
                 neighborhood.
               </p>
             </li>
@@ -203,16 +208,18 @@
                 general public may not find this information helpful or
                 understand specific diagnoses. Once a loved one is found, they
                 may find that the diagnosis they worked hard to keep private is
-                now known to their entire community. As the saying goes, 'Once
-                on the internet, always on the internet.''
+                now known to their entire community.
               </p>
             </li>
           </ul>
-          <p>
+          <p class="mt-3">
             Organizations that take the pledge will have a seal displayed on
             their website with a link to this page. Have an organization you
             would like to take the pledge? Send us their contact information to
-            [email address]. Fill out
+            <NuxtLink class="underline link" :href="`mailto:${email}`">{{
+              email
+            }}</NuxtLink
+            >. Fill out
             <NuxtLink
               class="link underline"
               href="https://docs.google.com/forms/d/e/1FAIpQLSc-zmcj_o93xscjhtiHzBvPYlUExqcHQptRF2BY4Zb613LrbQ/viewform?usp=dialog"
@@ -226,6 +233,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { email } from "~/data";
+</script>
 
 <style scoped></style>

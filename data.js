@@ -38,11 +38,11 @@ const topicsWithLinks = [
 ];
 
 const socialMediaLinks = [
-  { title: "Instagram", href: "https://Instagram.com" },
+  { title: "Instagram", href: "https://Instagram.com/va_activismforall" },
 ];
 
 const telephone = "4348255038";
-const email = "djs41286@gmail.com";
+const email = "virginiacommunitysolutions@gmail.com";
 
 export {
   siteName,

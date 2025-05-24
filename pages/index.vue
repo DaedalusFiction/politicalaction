@@ -4,16 +4,19 @@
       <div class="col-span-6 flex flex-col gap-3 relative">
         <div class="sticky top-36">
           <p class="text-xl md:text-3xl mb-12 mt-24 md:mt-0">
-            <span class="font-bold font-header">VAOA</span> is an online
-            repository for letter templates and information on becoming
-            politically active in Virginia
+            The
+            <span class="font-extrabold font-header uppercase"
+              >Virginia Association for Online Activism</span
+            >
+            is an online repository for letter templates and information on
+            becoming politically active in Virginia
           </p>
           <p class="mb-24">
             Not sure where to start? Check out our
-            <NuxtLink class="underline link" href="/getting-started"
-              >Getting Started</NuxtLink
+            <NuxtLink class="underline link" href="/opportunities"
+              >opportunities</NuxtLink
             >
-            guide!
+            page!
           </p>
         </div>
       </div>
@@ -50,7 +53,10 @@
         </p>
         <p class="text-xl">
           Please let us know of any opportunities to further make this website
-          more useful by reaching us at {{ email }}
+          more useful by reaching us at
+          <NuxtLink class="underline link" :href="`mailto:${email}`">{{
+            email
+          }}</NuxtLink>
         </p>
         <p class="text-2xl font-bold mb-3 mt-12">HOW TO USE THIS WEBSITE:</p>
         <ol class="list-decimal ml-8 mb-8">

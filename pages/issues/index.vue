@@ -3,8 +3,9 @@
     <LayoutPageHeader header="Issues" />
     <div class="max-w-screen-xl mx-auto p-3">
       <div v-for="(issue, index) in totals" :key="index">
-        <NuxtLink class="link text-xl" :href="`/issues/` + issue.topic"
-          >{{ issue.topic }} [{{ issue.total }}]</NuxtLink
+        <NuxtLink class="link text-2xl" :href="`/issues/` + issue.topic"
+          >{{ index + 1 }}.
+          <span class="capitalize">{{ issue.topic }}</span></NuxtLink
         >
       </div>
     </div>

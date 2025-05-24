@@ -62,7 +62,13 @@
 </template>
 
 <script setup>
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  arrayUnion,
+  collection,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { pages, siteName, socialMediaLinks } from "~/data";
 import { db } from "~/firebase.config";
 const selectedImage = useState("selectedImage");
@@ -70,8 +76,8 @@ const email = ref("");
 const emailSubmitted = ref(false);
 
 const handleSubscribe = async () => {
-  const mailingListRef = doc(db, "newsletter", "mailinglist");
-  await updateDoc(mailingListRef, { subscribers: arrayUnion(email.value) });
+  const mailingListRef = collection(db, "VAOAMailingList");
+  await addDoc(mailingListRef, { email: email.value });
   emailSubmitted.value = true;
 };
 </script>
