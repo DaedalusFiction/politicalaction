@@ -168,8 +168,8 @@
             the saying goes, 'Once on the internet, always on the internet.' As
             a result, we invite public, private, and volunteer organizations to
             take our Data Privacy and Reporting Guideline Pledge, especially
-            when handling public health information (PHI) and personally
-            identifiable information (PII). PHI is defined by the
+            when handling public protected health information (PHI) and
+            personally identifiable information (PII). PHI is defined by the
             <NuxtLink
               target="_blank"
               rel="noreferrer"
