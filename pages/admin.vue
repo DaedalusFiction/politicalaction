@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="max-w-screen-2xl mx-auto">
-      <button v-if="admin" class="btn my-3" @click="handleSignIn">
+      <button v-if="!admin" class="btn my-3" @click="handleSignIn">
         Sign In
       </button>
       <div v-else class="md:grid min-h-screen grid-cols-12 border">
