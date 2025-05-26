@@ -4,7 +4,10 @@
       @click="expanded = !expanded"
       class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
     >
-      <p class="text-xl md:text-3xl link my-3 uppercase font-bold">
+      <p
+        class="text-xl md:text-3xl link my-3 uppercase font-bold"
+        :class="expanded && 'text-secondary'"
+      >
         {{ issue.title || "Title Unavailable" }}
       </p>
       <p class="text-2xl transition" :class="expanded && 'rotate-90'">
@@ -38,7 +41,8 @@
                 v-for="(externalLink, index) in issue.recommendedAudience"
                 :key="index"
                 :href="externalLink.href"
-                >{{ externalLink.title }}</NuxtLink
+              >
+                {{ externalLink.title }}</NuxtLink
               >
             </div>
           </div>
@@ -63,20 +67,21 @@
           </div>
           <div
             v-if="issue.externalLinks && issue.externalLinks.length > 0"
-            class="flex gap-3 justify-between"
+            class=""
           >
-            <p class="font-bold w-fit">External Links:</p>
-            <div class="flex flex-col gap-1">
-              <NuxtLink
-                target="_blank"
-                rel="noreferrer"
-                class="link underline text-end"
-                v-for="(externalLink, index) in issue.externalLinks"
-                :key="index"
-                :href="externalLink.href"
-                >{{ externalLink.title }}</NuxtLink
-              >
-            </div>
+            <p class="font-bold w-fit">Additional Information:</p>
+            <ol class="list-decimal ml-8">
+              <li v-for="(externalLink, index) in issue.externalLinks">
+                <NuxtLink
+                  target="_blank"
+                  rel="noreferrer"
+                  class="link underline"
+                  :key="index"
+                  :href="externalLink.href"
+                  >{{ externalLink.title }}</NuxtLink
+                >
+              </li>
+            </ol>
           </div>
           <div class="flex justify-end mt-3">
             <NuxtLink

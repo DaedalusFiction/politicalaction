@@ -3,7 +3,7 @@
     <div class="py-12 md:mt-24 px-3 flex flex-col md:grid grid-cols-12 gap-3">
       <div class="col-span-6 flex flex-col gap-3 relative">
         <div class="sticky top-36">
-          <p class="text-xl md:text-3xl mb-12 mt-24 md:mt-0">
+          <p class="md:text-3xl mb-12 mt-24 md:mt-0">
             The
             <span class="font-extrabold font-header uppercase"
               >Virginia Association for Online Activism</span
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="col-span-6 flex flex-col gap-3">
-        <p class="text-xl">
+        <p class="">
           There is often low community involvement in and education on local and
           state advocacy due to the nationalization of politics, high political
           polarization, low morale and lack of sense of community, and community
@@ -33,7 +33,7 @@
           in another locality has already created messaging and undertaken
           research around an issue.
         </p>
-        <p class="text-xl">
+        <p class="">
           The purpose of <span class="font-bold">VAOA</span> is to offer the
           public a way to direct the public to solutions of their choice.
           Solutions are community-focused and community-generated, either from
@@ -51,7 +51,7 @@
           focused on highlighting opportunities for local advocacy in
           Charlottesville, VA and Richmond, VA.
         </p>
-        <p class="text-xl">
+        <p class="">
           Please let us know of any opportunities to further make this website
           more useful by reaching us at
           <NuxtLink class="underline link" :href="`mailto:${email}`">{{
@@ -75,7 +75,7 @@
           <li>Print it out and mail or send through other means.</li>
           <li>Come back and do the same thing again when you have time!</li>
         </ol>
-        <p class="text-xl">
+        <p class="">
           Bonus:
           <NuxtLink
             class="underline link"

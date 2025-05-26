@@ -1,8 +1,7 @@
 <template>
-  <div class="max-w-screen-xl mx-auto px-4 py-8">
-    <h2 class="page-header">Search</h2>
+  <LayoutPageHeader header="Search" />
+  <div class="max-w-screen-lg mx-auto px-4 py-8">
     <div class="md:flex gap-3 justify-between items-center">
-      <p>Explore issues</p>
       <div class="flex gap-2 mb-2 items-center">
         <label for="hitsPerPage"><p>Results Per Page:</p></label>
         <select name="Results Per Page" id="hitsPerPage" v-model="hitsPerPage">
@@ -19,7 +18,7 @@
         class="grow"
         id="query"
         v-model="searchQuery"
-        placeholder="Search Publications..."
+        placeholder="Search Issues..."
         @keyup.enter="getSearchResults(searchQuery)"
       />
       <button

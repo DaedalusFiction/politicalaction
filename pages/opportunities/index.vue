@@ -154,10 +154,12 @@
         <div class="col-span-12 h-full">
           <h2 class="font-bold text-2xl">For Organizations</h2>
           <hr class="mt-1" />
-          <p class="font-bold text-center mt-3">
+          <p class="font-bold uppercase text-xl text-center mt-6">
             Data Privacy and Reporting Guideline
           </p>
-          <p class="font-bold text-center mt-3">Pledge to Communities</p>
+          <p class="font-bold uppercase text-xl text-center mt-1">
+            Pledge to Communities
+          </p>
           <p class="mt-3">
             More than ever, it is crucial that government, the media, and
             grassroots organizations alike maintain as much data privacy of
@@ -243,7 +245,7 @@
             <NuxtLink
               target="_blank"
               rel="noreferrer"
-              class="underline link"
+              class="underline link text-sm"
               :href="`mailto:${email}`"
               >{{ email }}</NuxtLink
             >. Fill out
