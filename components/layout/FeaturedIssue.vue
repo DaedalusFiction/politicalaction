@@ -1,22 +1,11 @@
 <template>
-  <div class="border-b">
-    <button
-      @click="expanded = !expanded"
-      class="flex gap-3 text-start items-center justify-between md:justify-start w-full"
-    >
-      <p
-        class="text-xl md:text-3xl link my-3 font-bold"
-        :class="expanded && 'text-secondary'"
-      >
+  <div class="mb-12">
+    <div class="mb-3 whitespace-pre-wrap">
+      <p class="text-2xl my-3 font-extrabold">
         {{ issue.title || "Title Unavailable" }}
       </p>
-      <p class="text-2xl transition" :class="expanded && 'rotate-90'">
-        &RightArrow;
-      </p>
-    </button>
-    <div v-if="expanded" class="mb-3 whitespace-pre-wrap">
       <p class="mb-3 ml-8">{{ issue.description }}</p>
-      <div class="flex flex-col md:grid grid-cols-12 gap-12">
+      <div class="flex flex-col grid-cols-12 gap-3">
         <div class="fields col-span-6">
           <p>
             <span class="font-bold">Time for Action:</span>
@@ -101,7 +90,6 @@
 
 <script setup>
 const { issue } = defineProps(["issue"]);
-const expanded = ref(false);
 </script>
 
 <style scoped>

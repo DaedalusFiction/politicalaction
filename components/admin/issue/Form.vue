@@ -68,9 +68,9 @@
       <button v-if="issue" class="btn" @click="handleDeleteDocument">
         Delete
       </button>
-      <!-- <button v-if="issue" class="btn" @click="handleRelocateDocument">
-        Relocate
-      </button> -->
+      <button v-if="issue" class="btn" @click="handleSetAsFeatured">
+        Set as Featured
+      </button>
     </div>
   </div>
 </template>
@@ -130,6 +130,28 @@ const submitForm = async () => {
     emit("update");
   }
 };
+
+const handleSetAsFeatured = async () => {
+  const currentTime = new Date();
+  console.log(currentTime.getTime());
+  if (!issue) {
+    useSnackbar("No issue to set as featured");
+    return;
+  }
+  try {
+    await useUpdateDocument(
+      `templates`,
+      { ...formData.value, featuredTimeStamp: currentTime.getTime() },
+      documentFile.value,
+      issue.id
+    );
+    useSnackbar("Document successfully set as featured");
+    emit("update");
+  } catch {
+    useSnackbar("Error setting document as featured");
+  }
+};
+
 const handleDeleteDocument = async () => {
   try {
     await deleteDoc(doc(db, `templates`, issue.id));

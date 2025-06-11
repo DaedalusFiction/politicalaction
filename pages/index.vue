@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-screen-2xl mx-auto">
-    <div class="py-12 md:mt-24 px-3 flex flex-col md:grid grid-cols-12 gap-3">
+    <div class="py-12 md:mt-24 px-3 flex flex-col md:grid grid-cols-12 gap-12">
       <div class="col-span-6 flex flex-col gap-3 relative">
-        <div class="sticky top-36">
+        <div class="">
           <p class="md:text-3xl mb-12 mt-24 md:mt-0">
             The
             <span class="font-extrabold font-header uppercase"
@@ -11,20 +11,26 @@
             is an online repository for letter templates and information on
             becoming politically active in Virginia
           </p>
-          <p class="mb-24">
+          <p class="mb-12">
             Not sure where to start? Check out our
             <NuxtLink class="underline link" href="/opportunities"
               >opportunities</NuxtLink
             >
             page!
           </p>
+          <h3>Featured Issues:</h3>
+          <ul>
+            <li v-for="issue in featuredIssues" :key="issue.id">
+              <LayoutFeaturedIssue :issue="issue.data" :id="issue.id" />
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-span-6 flex flex-col gap-3">
         <p class="">
           There is often low community involvement in and education on local and
           state advocacy due to the nationalization of politics, high political
-          polarization, low morale and lack of sense of community, and community
+          polarization, low morale, lack of sense of community, and community
           understandings of advocacy as being a major commitment. Moreover,
           there is a misconception that engaging in politics can only involve
           voting and protesting. Additionally, many local organizations face
@@ -34,22 +40,22 @@
           research around an issue.
         </p>
         <p class="">
-          The purpose of <span class="font-bold">VAOA</span> is to offer the
-          public a way to direct the public to solutions of their choice.
-          Solutions are community-focused and community-generated, either from
-          local organizations or local individuals. Solutions could be letters
-          to local officials, email templates to city managers, public safety
-          announcements to be used included in neighborhood newsletters, or call
-          scripts to local businesses. Not all changes necessarily need to be
-          legislated or need to be legislated immediately. Displaying messaging
-          behind these types of changes reduces the barriers for getting
-          involved in politics and local advocacy, as local politicians and
-          leaders deserve to hear from community members of many different
-          perspectives and backgrounds. Additionally, the public may also view
-          who generated solutions and become more familiar with local advocates
-          or organizations. <span class="font-bold">VAOA</span> is currently
-          focused on highlighting opportunities for local advocacy in
-          Charlottesville, VA and Richmond, VA.
+          The purpose of <span class="font-bold">VAOA</span> is to direct the
+          public to solutions of their choice. Solutions are community-focused
+          and community-generated, either from local organizations or local
+          individuals. Solutions could be letters to local officials, email
+          templates to city managers, public safety announcements to be used
+          included in neighborhood newsletters, or call scripts to local
+          businesses. Not all changes necessarily need to be legislated or need
+          to be legislated immediately. Displaying messaging behind these types
+          of changes reduces the barriers for getting involved in politics and
+          local advocacy, as local politicians and leaders deserve to hear from
+          community members of many different perspectives and backgrounds.
+          Additionally, the public may also view who generated solutions and
+          become more familiar with local advocates or organizations.
+          <span class="font-bold">VAOA</span> is currently focused on
+          highlighting opportunities for local advocacy in Charlottesville, VA
+          and Richmond, VA.
         </p>
         <p class="">
           Please let us know of any opportunities to further make this website
@@ -96,7 +102,24 @@
 </template>
 
 <script setup>
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { email } from "~/data";
+import { db } from "~/firebase.config";
+const featuredIssues = ref([]);
+
+onMounted(async () => {
+  const issuesRef = collection(db, "templates");
+  const issuesQuery = query(
+    issuesRef,
+    orderBy("featuredTimeStamp", "desc"),
+    limit(5)
+  );
+  const featuredIssuesSnapshot = await getDocs(issuesQuery);
+  featuredIssues.value = featuredIssuesSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    data: doc.data(),
+  }));
+});
 </script>
 
 <style scoped></style>
