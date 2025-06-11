@@ -19,12 +19,15 @@
                 : 'bg-backgroundAccent dark:bg-backgroundAccentDarkMode'
             "
           >
-            <component :is="menuItem.icon" class="w-5 dark:stroke-white" />
             <p>{{ menuItem.name }}</p>
           </div>
         </div>
         <div class="col-span-10 p-3">
           <AdminIssueList v-if="selectedPanel === 'Issues'" />
+          <AdminInformation v-else-if="selectedPanel === 'Information'" />
+          <div v-else>
+            <p class="text-2xl">Select a panel from the left</p>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +45,10 @@ definePageMeta({
   layout: "admin",
 });
 const admin = ref(false);
-const menu = ref([{ name: "Issues", icon: bookIcon }]);
+const menu = ref([
+  { name: "Issues", icon: bookIcon },
+  { name: "Information", icon: bookIcon },
+]);
 const selectedPanel = ref("Issues");
 
 const handleSignIn = async () => {
